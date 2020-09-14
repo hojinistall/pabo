@@ -11,7 +11,7 @@ cache:
     - '$HOME/.gradle'
 script: "./gradlew clean build"
 
-# CI 실행 완료시 알람1
+# CI 실행 완료시 알람12
 notifications:
   email:
     recipients:
