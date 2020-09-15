@@ -11,6 +11,22 @@ cache:
     - '$HOME/.gradle'
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r pabo-springboot *
+  - mkdir -p deploy
+  - mv pabo-springboot.zip deploy/pabo-springboot.zip
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: pabo-springboot-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private #zip파일접근을 private
+    local_dir: deploy
+    wait-until-deployed:true
+
+
 # CI 실행 완료시 알람12
 notifications:
   email:
