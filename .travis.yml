@@ -24,7 +24,7 @@ deploy:
     skip_cleanup: true
     acl: private #zip파일접근을 private
     local_dir: deploy
-    wait-until-deployed:true
+    wait-until-deployed: true
 
 
 # CI 실행 완료시 알람12
