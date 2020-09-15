@@ -12,9 +12,16 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r pabo-springboot *
-  - mkdir -p deploy
-  - mv pabo-springboot.zip deploy/pabo-springboot.zip
+#  - zip -r pabo-springboot *
+#  - mkdir -p deploy
+#  - mv pabo-springboot.zip deploy/pabo-springboot.zip
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy *
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/pabo.zip
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
