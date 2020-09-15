@@ -26,6 +26,16 @@ deploy:
     local_dir: deploy
     wait-until-deployed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: pabo-springboot-build
+    key: pabo-springboot.zip
+    bundle_type: zip
+    application: pabo-springboot
+    deployment_group: pabo-springboot-group
+    region: ap-northeast-2
+    wait-until-deployed: true
 
 # CI 실행 완료시 알람12
 notifications:
