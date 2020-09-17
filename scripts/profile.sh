@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 쉬고 있는 profile찾기: real1이 사용중이면 real2가 쉬고 있고, 반대의 경우도 있음.
+# 쉬고 있는 profile찾기: real1이 사용중이면 real2가 쉬고 있고, 반대의 경우도 있음..
 function find_idle_profile() {
     RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
 
